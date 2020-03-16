@@ -1,0 +1,98 @@
+@import url("https://use.typekit.net/isz3kuk.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: proxima-nova, sans-serif;
+}
+
+.display {
+  width: 100%;
+  text-align: center;
+  height: 80vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 80);
+  color: white;
+  background-image: linear-gradient(#c66885, #fbe077);
+  position: relative;
+
+}
+
+.city-image>img{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.location {
+  padding-top: 75px;
+  font-size: 32px;
+}
+
+.temperature{
+  font-size: 78px;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+.description {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.description>.circumstance {
+  font-weight: 300;
+  font-size: 18px;
+  width: 70%;
+  height: 30px;
+  padding-left: 20px;
+  padding-top: 10px;
+  text-transform: capitalize;
+}
+
+.description>.feels-like {
+  width: 30%;
+}
+
+.input {
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+
+.input>a {
+  width: 40%;
+  background: #D01448;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 20px;
+}
+
+input[type=text] {
+  font-size: 16px;
+  padding: 10px 10px;
+  background: #313131;
+  border: none;
+  border-radius: none;
+  color: white;
+  width: 60%;
+  font-size: 18px;
+  text-align: center;
+}
+
+footer{
+  display: flex;
+  flex-wrap: wrap;
+  height: 20vh;
+  height: calc(var(--vh, 1vh) * 20);
+  color: white;
+  background: #030304;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
