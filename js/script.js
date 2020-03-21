@@ -3,23 +3,13 @@ let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 window.addEventListener('resize', () => {
-  let vh = window.innerHeight * 0.01;
+  vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
 // Array with city images for the background
 const cityImage = document.querySelector('.city-image');
-const cityImages = [
-  { cityName: "amsterdam", img: "images/amsterdam.svg"},
-  { cityName: "london", img: "images/london.svg"},
-  { cityName: "new york", img: "images/newyork.svg"},
-  { cityName: "paris", img: "images/paris.svg"},
-  { cityName: "rome", img: "images/rome.svg"},
-  { cityName: "cairo", img: "images/cairo.svg"},
-  { cityName: "disney", img: "images/disney.svg"},
-  { cityName: "dubai", img: "images/dubai.svg"},
-  { cityName: "sydney", img: "images/sydney.svg"},
-];
+const cities = ["amsterdam", "london", "new york", "paris", "rome", "cairo", "disney", "dubai", "sydney"];
 
 // Get HTML elements
 const city = document.querySelector('.location');
@@ -27,7 +17,7 @@ const day = document.querySelector('.day');
 const temperature = document.querySelector('.temperature');
 const circumstance = document.querySelector('.circumstance');
 const feelsLike = document.querySelector('.feels-like');
-const inputValue = document.querySelector('.inputValue');
+const input = document.querySelector('.inputValue');
 const button = document.querySelector('.button')
 
 // Get data on click
@@ -38,7 +28,7 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 // Getting data and assigning it to HTML elements
 function returnData(){
-  fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=bd9525c0f216f54f22acc53bf2f3e171&lang')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=bd9525c0f216f54f22acc53bf2f3e171&lang')
     .then((response) => {
       return response.json();
     })
@@ -56,16 +46,22 @@ function returnData(){
       circumstance.innerHTML = circData;
       feelsLike.innerHTML = 'feels like '+feelsLikeData+'&#176;';
 
-      // Loop through array, check if input is the same as object property
+      // Loop through array, check if input is the same as array item
       // to display the right background image
-      for(let i = 0; i < cityImages.length; i++) {
-          if (cityImages[i].cityName == inputValue.value.toLowerCase()) {
-              cityImage.innerHTML = '<img src="'+cityImages[i].img+'" alt=""/>';
+      const inputValue = input.value.toLowerCase();
+      for(let i = 0; i < cities.length; i++) {
+          if (cities[i] == inputValue) {
+              cityImage.innerHTML = '<img src="images/'+inputValue+'.svg" alt=""/>';
               break;
           }
           else {
             cityImage.innerHTML = '<img src="images/default.svg" alt=""/>';
           }
       }
-    });
+      console.log(data);
+    }
+  )
+  .catch(() => {
+    console.log(city.innerHTML = "Location not found");
+  });
 }
